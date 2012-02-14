@@ -11,7 +11,57 @@
 			yellow = '#c3a47b',
 			blue = '#8598ae',
 			orange = '#84392d',
-			brown = '#2d241b';
+			brown = '#2d241b',
+			bDots = [
+				[306,364, 2],
+				[315,352, 3],
+				[325,341, 3],
+				[338,328, 3],
+				[350,317, 3],
+				[362,309, 3],
+				[372,300, 2],
+				[384,291, 2],
+				[391,279, 2],
+				[398,267, 2],
+				[283,353, 2],
+				[284,338, 2],
+				[287,325, 3],
+				[290,313, 3],
+				[296,301, 3],
+				[305,288, 3],
+				[317,278, 2],
+				[332,270, 2],
+				[347,265, 2],
+				[360,262, 2],
+				[266,345, 2],
+				[263,330, 2],
+				[262,315, 3],
+				[261,297, 3],
+				[266,278, 3],
+				[277,261, 3],
+				[291,249, 3],
+				[308,242, 2],
+				[328,238, 2],
+				[328,238, 2],
+				[348,238, 2],
+				[327,384, 2],
+				[344,376, 2],
+				[359,368, 3],
+				[372,357, 3],
+				[384,343, 3],
+				[395,326, 3],
+				[403,309, 2],
+				[409,293, 2],
+				[336,400, 2],
+				[350,400, 2],
+				[366,397, 2],
+				[383,390, 3],
+				[397,377, 3],
+				[408,363, 3],
+				[417,347, 2],
+				[420,330, 2]
+			],
+			dotCnt = bDots.length;
 			
 		/*
 		 * Stem
@@ -309,150 +359,14 @@
 		ctx.bezierCurveTo(396,422,339,423,313,411);
 		ctx.stroke();
 		
-		ctx.beginPath();
+		//draw our tiny dots
 		ctx.fillStyle = blue;
-		ctx.lineWidth = 1;
-		ctx.arc(306,364, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(315,352, 3, 0, Math.PI*2,true);
-		ctx.fill();		
-		ctx.beginPath();
-		ctx.arc(325,341, 3, 0, Math.PI*2,true);		
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(338,328, 3, 0, Math.PI*2,true);		
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(350,317, 3, 0, Math.PI*2,true);		
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(362,309, 3, 0, Math.PI*2,true);		
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(372,300, 2, 0, Math.PI*2,true);		
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(384,291, 2, 0, Math.PI*2,true);		
-		ctx.fill();		
-		ctx.beginPath();
-		ctx.arc(391,279, 2, 0, Math.PI*2,true);		
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(398,267, 2, 0, Math.PI*2,true);		
-		ctx.fill();
-		
-		ctx.beginPath();
-		ctx.arc(283,353, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(284,338, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(287,325, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(290,313, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(296,301, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(305,288, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(317,278, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(332,270, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(347,265, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(360,262, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		
-		ctx.beginPath();
-		ctx.arc(266,345, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(263,330, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(262,315, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(261,297, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(266,278, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(277,261, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(291,249, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(308,242, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(328,238, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(348,238, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		
-		ctx.beginPath();
-		ctx.arc(327,384, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(344,376, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(359,368, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(372,357, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(384,343, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(395,326, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(403,309, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(409,293, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		
-		ctx.beginPath();
-		ctx.arc(336,400, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(350,400, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(366,397, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(383,390, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(397,377, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(408,363, 3, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(417,347, 2, 0, Math.PI*2,true);
-		ctx.fill();
-		ctx.beginPath();
-		ctx.arc(420,330, 2, 0, Math.PI*2,true);
-		ctx.fill();
+		for(var i=0; i<dotCnt; i++){
+			ctx.beginPath();
+			ctx.arc(bDots[i][0],bDots[i][1], bDots[i][2], 0, Math.PI*2,true);
+			ctx.fill();
+		}
+
 	}
 		
 	_drawFlower(canvasFlowerCtx);
