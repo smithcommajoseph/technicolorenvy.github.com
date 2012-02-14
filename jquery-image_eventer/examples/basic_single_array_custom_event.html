@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>Image Eventer Examples</title>
+
+	<!-- Meta -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="title" content="Image Eventer Examples" />
+	<meta name="copyright" content="Copyright © Joseph Smith. All Rights Reserved." />
+	<meta name="author" content="Legwork Studio (http://www.legworkstudio.com)" />
+	<meta name="robots" content="index, follow" />
+
+	<link rel="shortcut icon" href="http://2009.legworkstudio.com/favicon.ico" />
+
+	<!-- Whatever you do, do it with style -->
+	<link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+	<link rel="stylesheet" href="css/main.css" />
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://raw.github.com/technicolorenvy/jquery-image_eventer/master/jquery.image_eventer.js"></script>
+	
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-26194503-2']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			var $body = $('body'),
+				kesha = 'imgs/dean_boyers_favorites/kesha.jpg',
+				bieber = 'imgs/dean_boyers_favorites/justin-bieber.jpg',
+				swift = 'imgs/dean_boyers_favorites/taylor-swift.jpg',
+				$kesha = $('#crouching-tiger-hidden-kesha'),
+				$bieber = $('#bieberriffic'),
+				$swift = $('#she-tailors-swiftly'),
+				cEvent = 'shama_lama_ding_dong';
+			
+			$body
+				.bind(cEvent, function(e){
+					$kesha.html('<img width=300 src="'+kesha+'" alt="Go Nashville!" />');
+					$bieber.html('<img width=300 src="'+bieber+'" alt="Go American Idol!" />');
+					$swift.html('<img width=300 src="'+swift+'" alt="Go, um, Taylor!" />');
+				})
+				.image_eventer([ bieber, kesha, swift ], cEvent);
+						
+		});
+		
+	</script>
+</head>
+
+<body>
+	<div id="wrapper">
+		<h1>Single array w/ custom event</h1>
+		
+		<p>This example is functionally the same as the <a href="basic_single_array.html">last example</a>, however, as you can see below you can pass your own event name as the second argument to $.image_eventer. In this example we're using 'shama_lama_ding_dong' (passed as the var cEvent).</p>
+		
+		<ul>
+			<li id="crouching-tiger-hidden-kesha"></li>
+			<li id="bieberriffic"></li>
+			<li id="she-tailors-swiftly"></li>
+		</ul>
+		
+		<br/><br/>
+
+		<p>This allows you to _potentially_ bind to something prettier than 'image_eventer::imagesLoadComplete'.</p>
+		<p>If you see K$sha, Justin Bieber, and Taylor Swift, then all went as planned.</p>
+		<code>
+		var $body = $('body'),<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;kesha = 'imgs/dean_boyers_favorites/kesha.jpg',<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;bieber = 'imgs/dean_boyers_favorites/justin-bieber.jpg',<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;swift = 'imgs/dean_boyers_favorites/taylor-swift.jpg',<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$kesha = $('#crouching-tiger-hidden-kesha'),<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$bieber = $('#bieberriffic'),<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$swift = $('#she-tailors-swiftly'),<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;cEvent = 'shama_lama_ding_dong';<br/><br/>
+		
+		$body<br/>
+		&nbsp;&nbsp;.bind(cEvent, function(e){<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$kesha.html('&#60;img width=300 src="'+kesha+'" alt="Go Nashville!" /&#62;');<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$bieber.html('&#60;img width=300 src="'+bieber+'" alt="Go American Idol!" /&#62;');<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;$swift.html('&#60;img width=300 src="'+swift+'" alt="Go, um, Taylor!" /&#62;');<br/>
+		&nbsp;&nbsp;})<br/>
+		&nbsp;&nbsp;.image_eventer([ bieber, kesha, swift ], cEvent);
+		</code>
+		
+	</div>
+	
+</body>
+</html>

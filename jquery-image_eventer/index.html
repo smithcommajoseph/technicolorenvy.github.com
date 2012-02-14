@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+<head>
+	<title>Image Eventer Examples</title>
+
+	<!-- Meta -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="title" content="Image Eventer Examples" />
+	<meta name="copyright" content="Copyright © Joseph Smith. All Rights Reserved." />
+	<meta name="author" content="Legwork Studio (http://www.legworkstudio.com)" />
+	<meta name="robots" content="index, follow" />
+
+	<link rel="shortcut icon" href="http://2009.legworkstudio.com/favicon.ico" />
+
+	<!-- Whatever you do, do it with style -->
+	<link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css" />
+	<link href='http://fonts.googleapis.com/css?family=Paytone+One' rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="css/main.css" />
+	
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-26194503-2']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+	
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<h1>jQuery Image Eventer</h1>
+		</div>
+		
+		<div id="jie-main">
+			<div id="downloads">
+				<a href="https://raw.github.com/technicolorenvy/jquery-image_eventer/master/jquery.image_eventer.min.js">
+					<span>Minified</span> <br/> (2.3K)
+				</a>
+				<span class="divider">|</span>
+				<a href="https://raw.github.com/technicolorenvy/jquery-image_eventer/master/jquery.image_eventer.js">
+					<span>Development</span> <br/> (3.9K)
+				</a>
+				<span class="divider">|</span>
+				<a href="https://github.com/technicolorenvy/jquery-image_eventer/zipball/master">
+					<span>Full .zip</span> <br/> (8.5MB)
+				</a>
+			</div>
+			<h2 id="mission">What is jQ Image Eventer?</h2>
+			<p>The JQuery Image Eventer plugin is an event driven image load detector. As collections of images are loaded into the DOM, <code>$.image_eventer</code> will trigger the appropriate, predefined events.</p>
+			
+			<p>You may then, in your own client-side code, bind to those events.</p>
+
+			<h2 id="overview">Overview</h2>
+			<p>You can massage your load times by compressing your assets and utilizing lazy loading. However, load times <b>are</b> a fact of life that developers have to face and deal with gracefully.</p>
+			
+			<p><code>$.image_eventer</code> simplifies one component of this common task. It gives you the ability to bind to events as images load and doesn't make assumptions.</p>
+			
+			<p>You may simply want to show images once a collection has loaded, or fade in each image gracefully as they are ready. Other use-cases may include using <code>$.image_eventer</code> to fire events as images load and update a progressbar.</p>
+			
+			<p>It's your choice. You get what you give.</p>
+
+			<h2 id="usage">Basic Usage <span>|</span> Collections</h2>
+			<p><code>$.image_eventer</code> acts upon collections of images.</p>
+			
+			<p>A collection may be either an array of urls...</p>
+			<pre class="codeblock">.image_eventer(<span>[<span class="sTr">'lib/imgs/img1.jpg'</span>, <span class="sTr">'lib/imgs/img2.jpg'</span>, ...]</span>);</pre>
+			
+			<p>or a jQuery wrapper set that contains img nodes.</p>
+			<pre class="codeblock">.image_eventer(<span class="jQ">$</span>(<span class="sTr">"#images_container"</span>));</pre>
+			
+			<p>If you need to ensure that images load in a specific order, you may pass multiple collections to <code>$.image_eventer</code> in the following fashion.</p>
+			<pre class="codeblock">.image_eventer(<span>{
+	collections: [
+		[<span class="sTr">'lib/imgs/img1.jpg'</span>, <span class="sTr">'lib/imgs/img2.jpg'</span>, ...],
+		[<span class="sTr">'lib/imgs/img1.jpg'</span>, <span class="sTr">'lib/imgs/img2.jpg'</span>, ...],
+	]
+}</span>);</pre>
+			
+			<p>Each collection will load, fire it's complete event, then move on to the next collection.</p>
+			
+			<h2 id="overview">Basic Usage <span>|</span> Being a good Listener</h2>
+			<p>When using <code>$.image_eventer</code>, it's advised that you chain invoke <code>.bind</code> and <code>.image_eventer</code> in the following order.</p>
+			
+			<pre class="codeblock"><span class="jQ">$</span>(<span class="sTr">"body"</span>)
+	.bind(<span class="sTr">'image_eventer::imagesLoadComplete'</span>, <span class="nUm">_handlerFn</span>)
+	.image_eventer(<span>A collection of imgs</span>);</pre>
+	
+			<p>If your images are served from your browsers cache the <code>'image_eventer::imagesLoadComplete'</code> will fire almost immediately. You want to ensure you are listening for that event <b>before</b> it has a chance to fire.</p>
+			
+			<h2 id="mission">Seeing Image Eventer in action</h2>
+			<p>Below are a few basic usage examples. If you're visiting this page for the first time, you should see a delay while the images load.</p>
+			<!-- <p>The below examples are using <a href="http://fgnass.github.com/spin.js/">spin.js</a> to provide an image-less spinner.</p> -->
+			
+			<h3>1. Collections as Arrays</h3>
+			<p>The general pattern when passing arrays of image urls is as follows.</p>
+			
+			<pre class="codeblock"><span class="jQ">$</span>(<span class="sTr">"body"</span>)
+	.bind(<span class="sTr">'image_eventer::imagesLoadComplete'</span>, <span class="nUm">_handlerFn</span>)
+	.image_eventer(<span>[<span class="sTr">'img1.jpg'</span>, <span class="sTr">'img2.jpg'</span>, ...]</span>);</pre>
+			
+			<p>Or, use a custom event.</p>
+			
+			<pre class="codeblock"><span class="jQ">$</span>(<span class="sTr">"body"</span>)
+	.bind(<span class="sTr">'customEvent'</span>, <span class="nUm">_handlerFn</span>)
+	.image_eventer(<span>[<span class="sTr">'img1.jpg'</span>, <span class="sTr">'img2.jpg'</span>, ...]</span>, <span class="sTr">'customEvent'</span>);</pre>
+	
+			<p><a id="orange-btn" href="javascript:void(0)">Click me</a> to load images below.</p>
+			
+			<div id="orange-collection" class="collection-wrapper grey-back">
+				<div class="spins"></div>
+				<div class="collection hidden"></div>
+			</div>
+			
+			<h3>2. Collections jQ wrapper sets</h3>
+			<p>Using a jQ wrapper set is almost identical to the above example.</p>
+
+			<pre class="codeblock"><span class="jQ">$</span>(<span class="sTr">"body"</span>)
+	.bind(<span class="sTr">'customEvent'</span>, <span class="nUm">_handlerFn</span>)
+	.image_eventer(<span class="jQ">$</span>(<span class="sTr">"#images_container"</span>), <span class="sTr">'customEvent'</span>);</pre>
+	
+			<p><a id="green-btn" href="javascript:void(0)">Click me</a> to load images below.</p>
+			
+			<div id="green-collection" class="collection-wrapper grey-back">
+				<div class="spins"></div>
+				<div class="collection hidden"></div>
+			</div>
+		
+			<h3>3. Multiple Collections - P1</h3>
+			<p>Loading multiple collections in order using multiple events.</p>
+			
+			<pre class="codeblock"><span class="jQ">$</span>(<span class="sTr">"body"</span>)
+	.bind(<span>{
+		<span class="sTr">'customEvent1'</span>: <span class="nUm">_handlerFn1</span>,
+		<span class="sTr">'customEvent2'</span>: <span class="nUm">_handlerFn2</span>
+	}</span>)
+	.image_eventer(<span>{
+		collections: [
+		  { 
+		    files: [<span class="sTr">'img1.jpg'</span>, <span class="sTr">'img2.jpg'</span>, ...],
+		    completedEvent: <span class="sTr">'customEvent1'</span>
+		  },
+		  { 
+		    files: [<span class="sTr">'img8.jpg'</span>, <span class="sTr">'img9.jpg'</span>, ...],
+		    completedEvent: <span class="sTr">'customEvent1'</span>
+		  }
+		]
+	 }</span>);</pre>
+			
+			<p>Note: You may mix and match array collections and jQ wrapper set collections.</p>
+			
+			<p><a id="grey-btn" href="javascript:void(0)">Click me</a> to load images below.</p>
+			
+			<div id="grey-collection" class="collection-wrapper grey-back">
+				<div id="s1" class="spins"></div>
+				<div id="s2" class="spins"></div>
+				<div class="collection"></div>
+			</div>
+			
+			<h3>4. Multiple Collections - P2</h3>
+			<p>Remembering that in jQuery, event handler functions may be passed the <code>event</code> as the first argument. When using <code>$.image_eventer</code>, you may also pass a second argument to your handler fn.</p>
+			
+			<p>The second argument will be an array of img files that have been successfully loaded in the DOM. In other words, you get back the collection that was passed in.</p>
+			
+			<p>This is particularly handy should you want to bind to a single event while acting on multiple collections. </p>
+			
+			<pre class="codeblock"><span class="jQ">$</span>(<span class="sTr">"body"</span>)
+	.bind(<span class="sTr">'image_eventer::imagesLoadComplete'</span>, <span class="nUm">_handlerFn</span></span>)
+	.image_eventer(<span>{
+		collections: [
+		  [<span class="sTr">'img1.jpg'</span>, <span class="sTr">'img2.jpg'</span>, ...],
+		  [<span class="sTr">'img8.jpg'</span>, <span class="sTr">'img9.jpg'</span>, ...]
+		]
+	 }</span>);
+
+<span class="jQ">function</span> <span class="nUm">_handlerFn</span>(<span>event</span>, <span>files</span>){
+	<span class="jQ">var</span> i, len <span class="jQ">=</span> files.length;
+	
+	<span class="jQ">for</span>(i<span class="jQ">=</span><span class="nUm">1</span>, i<span class="jQ">&#60;=</span>len; i<span class="jQ">++</span>){
+		
+	  <span class="nF">&#47;&#47;Do stuff here...</span>
+	
+	}
+}</pre>
+			<p><a id="sienna-btn" href="javascript:void(0)">Click me</a> to load images below.</p>
+			
+			<div id="sienna-collection" class="collection-wrapper grey-back">
+				<div class="collection"></div>
+			</div>
+			
+			<h2 id="more">Want more?</h2>
+			<p>Check out the more in&ndash;depth examples <a href="examples/index.html">here</a>.</p>
+			<p>Find a bug or have a feature request? Create an issue <a href="https://github.com/technicolorenvy/jquery-image_eventer/issues">here</a> and let me know.</p>
+			<p>This plugin is in active development and documentation will be forthcoming shortly.</p>
+			
+		</div>
+
+	</div>
+
+	<a href="https://github.com/technicolorenvy/jquery-image_eventer" id="github">
+		<img src="imgs/forkme.png" alt="fork me on github" />
+	</a>
+	
+	<!-- Sauce it -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://raw.github.com/technicolorenvy/jquery-image_eventer/master/jquery.image_eventer.js"></script>
+	<script type="text/javascript" src="js/spin.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
