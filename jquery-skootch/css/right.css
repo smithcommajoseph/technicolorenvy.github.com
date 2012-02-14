@@ -1,0 +1,58 @@
+body#right{ 
+	overflow-x: hidden !important;
+	}
+
+/*Right Skootch Menu*/
+#right #skootch-me{ 
+	overflow: visible;
+	position: fixed;
+	top: 232px;
+	right:0px;
+	width: 48px;
+	z-index: 9998;
+	/*opacity: 0.9;*/
+	}
+#right #skootch-me dt{ 
+	background: url("../imgs/righthandle_sprite.png") no-repeat -60px;
+	cursor: pointer;
+	float: right;
+	font-weight: bold;
+	height: 31px;
+	left: 0px;
+	position: absolute;
+	white-space: nowrap;
+	width: 48px;
+	z-index: 9999;
+	}
+#right #skootch-me dt.skootch-trigger-open{ 
+	background-position: 0px;
+	}
+#right #skootch-me dt span{ 
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+	display: block;
+	font-size: 15px;
+	position: relative;
+	text-transform: capitalize;
+	top: 56px;
+	}
+#right #skootch-me dd{ 
+	display: block;
+	float: right;
+	right: -320px;
+	position: relative;
+	width: 320px;
+	}
+#right #skootch-me dd li{ 
+	clear: left;
+	display: block;
+	float: left;
+	height: 24px;
+	left: 0px;
+	margin-bottom: 10px;
+	position: relative;
+	text-transform: capitalize;
+	}
+

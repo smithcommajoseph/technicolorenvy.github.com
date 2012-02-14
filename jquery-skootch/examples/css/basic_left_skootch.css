@@ -1,0 +1,28 @@
+#skootch-trigger{ 
+	display:block;
+	position:absolute;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+	display: block;
+	font-size: 15px;
+	text-transform: capitalize;
+	top: 300px;
+	left: -56px;
+	padding:10px;
+	background-color:#bbb;
+	z-index:999;
+	}
+#skootch-invader{ 
+	display:inline-block;
+	width:200px;
+	position:absolute;
+	left: -200px;
+	background-color:yellow;
+	}
+#skootch-indigen{ 
+	padding-top:20px;
+	width:800px;
+	margin:0 auto;
+	}

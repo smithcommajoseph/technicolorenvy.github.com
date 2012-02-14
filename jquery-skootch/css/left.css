@@ -1,0 +1,56 @@
+/* @override http://skootch:8888/css/left.css */
+
+/*Left Skootch Menu*/
+#left #skootch-me{ 
+	overflow: visible;
+	position: fixed;
+	top: 232px;
+	left:0px;
+	width: 48px;
+	z-index: 9998;
+	/*opacity: 0.9;*/
+	}
+#left #skootch-me dt{ 
+	background: url("../imgs/lefthandle_sprite.png") no-repeat;
+	cursor: pointer;
+	float: left;
+	font-weight: bold;
+	height: 31px;
+	left: 0px;
+	position: absolute;
+	white-space: nowrap;
+	width: 48px;
+	z-index: 9999;
+	}
+#left #skootch-me dt.skootch-trigger-open{ 
+	background-position: -60px;
+	}
+#left #skootch-me dt span{ 
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+	display: block;
+	font-size: 15px;
+	position: relative;
+	text-transform: capitalize;
+	top: 56px;
+	}
+#left #skootch-me dd	{ 
+	display: block;
+	float: left;
+	left: -320px;
+	position: relative;
+	width: 320px;
+	}
+#left #skootch-me dd li{ 
+	clear: right;
+	display: block;
+	float: right;
+	height: 24px;
+	left: 0px;
+	margin-bottom: 10px;
+	position: relative;
+	text-transform: capitalize;
+	}
+	

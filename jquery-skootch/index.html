@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>jQuery Skootch</title>
+	
+	<!-- Meta -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="title" content="jQuery Skootch Examples" />
+	<meta name="copyright" content="Copyright © Joseph Smith. All Rights Reserved." />
+	<meta name="author" content="Legwork Studio (http://www.legworkstudio.com)" />
+	<meta name="robots" content="index, follow" />
+	
+	<link rel="shortcut icon" href="http://2009.legworkstudio.com/favicon.ico" />
+	
+	<!-- Whatever you do, do it with style -->
+	<link href='http://fonts.googleapis.com/css?family=Paytone+One&v1' rel='stylesheet' type='text/css' />
+	<link href="css/style.css" type="text/css" media="screen" rel="Stylesheet" />
+	<link href="css/left.css" type="text/css" media="screen" rel="Stylesheet" />
+
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-26194503-3']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+	
+</head>
+<body id="left">
+	<dl id="skootch-me">
+	    <dt id="skootch-trigger"><span>Contents</span></dt>
+	    <dd id="skootch-invader">
+	        <ul>
+	        </ul>
+	    </dd>
+	</dl>
+    <div id="main">
+        <div id="header">
+            <h1>jQuery Skootch</h1>
+        </div>
+    
+        <div id="skootch-indigen">
+			<div id="downloads">
+				<a href="https://raw.github.com/technicolorenvy/jquery-skootch/master/jquery.skootch.min.js">
+					<span>Minified</span> <br/> (4.0K)
+				</a>
+				<span class="divider">|</span>
+				<a href="https://raw.github.com/technicolorenvy/jquery-skootch/master/jquery.skootch.js">
+					<span>Development</span> <br/> (7.6K)
+				</a>
+				<span class="divider">|</span>
+				<a href="https://github.com/technicolorenvy/jquery-skootch/zipball/master">
+					<span>Full .zip</span> <br/> (23.5K)
+				</a>
+			</div>
+            <h2 id="mission">What is jQ Skootch?</h2>
+            <p>The JQuery Skootch plugin allows you to easily animate items into the viewport and will shift the already visible DOM items appropriately.</p>
+			<p>(Click on the 'Contents' Tab to the left for a working example.)</p>
+            
+            <h2 id="overview">Overview</h2>
+            <p>The plugin provides a method called <code>skootch</code> which is invoked on a <code>trigger</code> container.</p> 
+            <p>Two other containers are required for this plugin to function. An <code>indigen</code> and an <code>invader</code>.</p>
+            <p>The <code>trigger</code> is the container to which our custom click handler will be bound which <em>triggers</em> the <code>skootch</code> animations.</p>
+            <p>The <code>invader</code> is the container which will animate into our viewport.</p>
+			<p>The <code>indigen</code> will be shifted/skootched out of the way to make room for the <code>invader</code>. This container is often the page's primary content.</p>
+			
+			<h2 id="usage">Basic Usage</h2>
+            <p>Assuming your HTML has the following structure:</p>
+			<pre class="codeblock">&#60;body&#62;
+  &#60;div id="<span class="sTr">skootch-trigger</span>"&#62;
+    <span class="sTr">The trigger element</span>
+  &#60;/div&#62;
+
+  &#60;div id="<span class="sTr">skootch-invader</span>"&#62;
+    &#60;p&#62;<span class="sTr">Some content</span>&#60;/p&#62;
+  &#60;/div&#62;
+
+  &#60;div id="<span class="sTr">skootch-indigen</span>"&#62;
+    <span class="sTr">The "primary" content for the page</span>
+  &#60;/div&#62;
+&#60;/body&#62;</pre>
+	 		<p>Then you can invoke <code>skootch</code> with the following code.</p>
+            <pre class="codeblock"><span class="jQ">$</span>(<span class="sTr">"#skootch-trigger"</span>).skootch();</pre>
+            
+            <h2 id="usage-css">Let's Talk CSS</h2>
+			<p>jQ Skootch is, at it's core, a wrapper for various animations. With that in mind, there a few CSS rules that we want to have in place.</p>
+			<p>If we consider the above example, a good <em>starting point</em> for our CSS would be</p>
+			
+			<pre class="codeblock">#skootch-trigger{ 
+  <span class="cS">height</span><span class="nF">:</span> <span class="cSR">31px</span><span class="nF">;</span>
+  <span class="cS">left</span><span class="nF">:</span> <span class="cSR">0px</span><span class="nF">;</span>
+  <span class="cS">position</span><span class="nF">:</span> <span class="cSR">absolute</span><span class="nF">;</span>
+  <span class="cS">width</span><span class="nF">:</span> <span class="cSR">48px</span><span class="nF">;</span>
+}
+#skootch-invader {
+  <span class="cS">display</span><span class="nF">:</span> <span class="cSR">block</span><span class="nF">;</span>
+  <span class="cS">float</span><span class="nF">:</span> <span class="cSR">left</span><span class="nF">;</span>
+  <span class="cS">left</span><span class="nF">:</span> <span class="cSR">-320px</span><span class="nF">;</span>
+  <span class="cS">position</span><span class="nF">:</span> <span class="cSR">relative</span><span class="nF">;</span>
+  <span class="cS">width</span><span class="nF">:</span> <span class="cSR">320px</span><span class="nF">;</span>
+}
+#skootch-indigen {	
+  <span class="cS">padding</span><span class="nF">:</span> <span class="cSR">20px</span><span class="nF">;</span>
+  <span class="cS">width</span><span class="nF">:</span> <span class="cSR">800px</span><span class="nF">;</span>
+  <span class="cS">margin</span><span class="nF">:</span> <span class="cSR">0 auto</span><span class="nF">;</span>
+}</pre>
+			<p>The above sets up our <code>invader</code> to be off screen by setting it's relative position to negative it's actual width.</p>
+			<p>Defining the width of the <code>indigen</code> container is not explicitly required.
+            <p>The <code>trigger</code> container can pretty much go where ever you like, however, for impact, it is recommended to enforce an <code>absolute</code> or <code>fixed</code> positioning.</p>
+            
+            <h2 id="methods">Methods</h2>
+			<p><strong>Init:</strong></p>
+			<pre class="codeblock"><span class="jQ">$</span>('<span class="sTr">trigger-selector</span>').skootch('<span class="sTr">op_key</span>', '<span class="sTr">op_value</span>');</pre>
+			<p>OR</p>
+			<pre class="codeblock"><span class="jQ">$</span>('<span class="sTr">trigger-selector</span>').skootch(<span>settings:Object<span>);</pre>
+			<p>Initializes skootch on the selected element(s) with the passed settings.</p>
+			<p>See <a href="#overrides">'Overriding default params'</a> section below for more info on overriding the default params.</p>
+			
+			<p><strong>Advance:</strong></p>	
+			<pre class="codeblock"><span class="jQ">$</span>('<span class="sTr">trigger-selector</span>').skootch('<span class="sTr">advance</span>', <span class="nUm">callback</span>);</pre>
+			<p>Advances a skootch that has been previously initialized, then executes an optional callback fn.</p>
+			
+			<p><strong>Retreat:</strong></p>
+			<pre class="codeblock"><span class="jQ">$</span>('<span class="sTr">trigger-selector</span>').skootch('<span class="sTr">retreat</span>', <span class="nUm">callback</span>);</pre>
+			<p>Retreats a skootch that has been previously initialized, then executes an optional callback fn.</p>
+			
+			<p><strong>Destroy:</strong></p>
+			<pre class="codeblock"><span class="jQ">$</span>('<span class="sTr">trigger-selector</span>').skootch('<span class="sTr">destroy</span>', <span class="nUm">callback</span>);</pre>
+			<p>Removes all skootch elements for selected item(s) from the DOM and returns non-dynamic items to their original state, then executes an optional callback fn.</p>
+			
+			<h2 id="props">Properties</h2>
+			<pre class="codeblock"><span class="jQ">$</span>.fn.skootch.defaults <span class="jQ">=</span> {
+  advanceEasing:        '<span class="sTr">swing</span>',
+  advanceSpeed:         '<span class="sTr">slow</span>',
+  indigen:              '<span class="sTr">#skootch-indigen</span>',
+  indigenUseMargins:    <span class="nUm">false</span>, 
+  invader:              '<span class="sTr">#skootch-invader</span>',
+  invaderClickCallback: <span class="nUm">null</span>,
+  invaderClickRetreat:  <span class="nUm">true</span>,
+  invaderLinks:         '<span class="sTr">#skootch-invader a, 
+			 #skootch-invader input[type=submit]</span>',
+  justify:              '<span class="sTr">left</span>',
+  minInvaderMargin:     <span class="sTr">40</span>,
+  retreatEasing:        '<span class="sTr">swing</span>',
+  retreatSpeed:         '<span class="sTr">slow</span>',
+  smart:                <span class="nUm">true</span>,
+  squashOverflow:       '<span class="sTr">true</span>',
+  triggerClosed:        '<span class="sTr">skootch-trigger-closed</span>',
+  triggerOpen:          '<span class="sTr">skootch-trigger-open</span>',
+  wrapperSuffix:        '<span class="sTr">skootch-wrap</span>'
+};</pre>
+
+			<p><strong>advanceEasing:String = "easing fn name"<br>
+			default = "swing"</strong><br>
+			advancing easing function.</p>
+
+			<p><strong>advanceSpeed:String = "easing speed"<br>
+			default = "slow"</strong><br>
+			advancing animation speed.</p>
+
+			<p><strong>indigen:String = "id-or-classname"<br>
+			default = "#skootch-indigen"</strong><br>
+			the id or class name used for the element that will be skootched.</p>
+
+			<p><strong>indigenUseMargins:Boolean<br>
+			default = false</strong><br>
+			should we use Margins to calculate the total width of the $indigen elem (the container that skootch is invoked upon).</p>
+
+			<p><strong>invader:String = "id-or-classname"<br>
+			default = "#skootch-invader"</strong><br>
+			the id or class name used element that will skootch into the window.</p>
+
+			<p><strong>invaderClickCallback:Function<br>
+			default = null</strong><br>
+			callback for the invaderLinks on click.</p>
+
+			<p><strong>invaderClickRetreat:Boolean<br>
+			default = true</strong><br>
+			should everything skootch back to it's start position if a invaderlink is clicked?</p>
+
+			<p><strong>invaderLinks:String = "id-or-classnames"<br>
+			default = "#skootch-invader a, #skootch-invader input[type=submit]"</strong><br>
+			if there are links in the invader elem these are them.</p>
+
+			<p><strong>justify:String = "direction"<br>
+			default = "left"</strong><br>
+			skootch trigger justification, currently only 'right' or 'left' are supported.</p>
+
+			<p><strong>minInvaderMargin:Number = "num in pixels"<br>
+			default = 40</strong><br>
+			the minimum amount of margin applied to the invader elem - ONLY USED IF smart = true.</p>
+
+			<p><strong>retreatEasing:String = "easing fn name"<br>
+			default = "swing"</strong><br>
+			retreat easing function.</p>
+
+			<p><strong>retreatSpeed:String = "easing speed"<br>
+			default = "slow"</strong><br>
+			retreat animation speed.</p>
+
+			<p><strong>smart:Boolean<br>
+			default = true</strong><br>
+			should we change the amount we animate our skootched elems based on window size?</p>
+
+			<p><strong>squashOverflow:Boolean<br>
+			default = true</strong><br>
+			should overflow-x be present when the invader is in view?</p>
+			
+			<p><strong>triggerClosed:String = "classname-without-."<br>
+			default = "skootch-trigger-closed"</strong><br>
+			trigger closed status class.</p>
+
+			<p><strong>triggerOpen:String = "classname-without-."<br>
+			default = "skootch-trigger-open"</strong><br>
+			trigger open status class.</p>
+
+			<p><strong>wrapperSuffix:String = "suffix-added-to-wrapper"<br>
+			default = "skootch-wrap"</strong><br>
+			the div that will wrap our DOM node that will be skootched by our 'invader'.</p>
+			
+			<h2 id="overrides">Overriding default params</h2>
+            <p>The default options can be overridden by passing a property name and value as separate parameters...</p>
+            <pre class="codeblock"><span class="jQ">$</span>(<span class="sTr">"#div"</span>).skootch(<span class="sTr">"justify"</span>, <span class="sTr">"right"</span>);</pre>
+            
+            <p>...or by passing a single map of key-value pairs to the <code>skootch</code> method.</p>
+            
+            <pre class="codeblock"><span class="jQ">$</span>(<span class="sTr">"#div"</span>).skootch({
+                    trigger: <span class="sTr">"#skootch-trigger"</span>, 
+                    invader: <span class="sTr">"#skootch-invader"</span>, 
+                    invaderlinks: <span class="sTr">"a.invaderlinks"</span>, 
+                    advancespeed: <span class="sTr">"fast"</span>, 
+                    retreatspeed: <span class="nUm">1000</span>
+                });</pre>
+        	<h2 id="more">Want more?</h2>
+			<p>Check out the more in&ndash;depth examples <a href="examples/index.html">here</a>.</p>
+			<p>Find a bug or have a feature request? Create an issue <a href="https://github.com/technicolorenvy/jquery-skootch/issues">here</a> and let me know.</p>			
+        </div>
+    </div>
+    
+    <a href="https://github.com/technicolorenvy/jquery-skootch" id="github">
+        <img src="imgs/forkme.png" alt="fork me on github" />
+    </a>
+
+	<!-- The Sauce -->
+	<script type="text/javascript" src="js/jquery-1.5.js"></script>
+	<script type="text/javascript" src="js/jquery.skootch.js"></script>
+	<script type="text/javascript" src="js/skootch-demos.js"></script>
+	
+</body>
+</html>

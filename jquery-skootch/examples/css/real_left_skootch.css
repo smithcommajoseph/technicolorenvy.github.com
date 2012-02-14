@@ -1,0 +1,49 @@
+#skootch-me{ 
+	left: 0px;
+	overflow: visible;
+	position: fixed;
+	top: 232px;
+	width: 48px;
+	z-index: 9998;
+	}
+#skootch-me dt{ 
+	cursor: pointer;
+	float: left;
+	font-weight: bold;
+	height: 31px;
+	left: 0px;
+	position: absolute;
+	white-space: nowrap;
+	width: 48px;
+	z-index: 9999;
+	}
+#skootch-me dt{ 
+	background-color: #008e2b;
+	}
+#skootch-me dt.skootch-trigger-open{ 
+	background-color: #363d8c;
+	}
+#skootch-me dt a { 
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+	display: block;
+	font-size: 15px;
+	position: relative;
+	text-transform: capitalize;
+	top: 56px;
+	}	
+#skootch-invader{ 
+	display:inline-block;
+	width:100px;
+	position:absolute;
+	left: -160px;
+	background-color: #ccc; 
+	padding-left: 60px;
+	}
+#skootch-indigen{ 
+	padding-top:20px;
+	width:800px;
+	margin:0 auto;
+	}

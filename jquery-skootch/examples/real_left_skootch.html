@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+<head>
+	<title>jQuery Skootch Examples</title>
+
+	<!-- Meta -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="title" content="jQuery Skootch Examples" />
+	<meta name="copyright" content="Copyright © twoHard & Joseph Smith. All Rights Reserved." />
+	<meta name="author" content="twoHard (http://www.twohard.com)" />
+	<meta name="robots" content="index, follow" />
+
+	<link rel="shortcut icon" href="http://www.twohard.com/sites/all/themes/twohard/favicon.ico" />
+
+	<!-- Whatever you do, do it with style -->
+	<link rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="css/real_left_skootch.css" />
+
+	<script type="text/javascript" src="../js/jquery-1.5.js"></script>
+	<script type="text/javascript" src="../js/jquery.skootch.js"></script>
+	
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-26194503-3']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+	
+</head>
+
+<body>
+	<dl id="skootch-me">
+		<dt id="skootch-trigger"><a href="javascript:void(0)">The Skootch trigger</a></dt>
+		<dd id="skootch-invader">
+			Lets say we have some really awesome content here. It's just gonna chill right here waiting for someone to see it.
+		</dd>
+	</dl>
+
+	<div id="skootch-indigen">
+		<h1>Anatomy of a better Skootch</h1>
+		<p>Using offset parents to aide in our positioning as well as the '.skootch-trigger-open' class that gets applied to the 'trigger' element to show current skootch state.</p>
+		<h2>The HTML</h2>
+           <code>
+		&#60;body&#62;<br/>
+		&nbsp;&nbsp;&#60;dl id="skootch-me"&#62;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&#60;dt id="skootch-trigger"&#62;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#60;a href="javascript:void(0)"&#62;Trigger text&#60;/a&#62;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&#60;/dt&#62;<br/>
+		<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&#60;dd id="skootch-invader"&#62;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some content here.<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&#60;/dd&#62;<br/>
+		&nbsp;&nbsp;&#60;/dl&#62;<br/>
+		
+		<br/>
+		&nbsp;&nbsp;&#60;div id="skootch-indigen"&#62;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;The "primary" content for the page<br/>
+		&nbsp;&nbsp;&#60;/div&#62;<br/>
+		&#60;/body&#62;</code>
+
+		<h2>The CSS</h2>
+		<code>
+			#skootch-me{ <br/>
+			&nbsp;&nbsp;left: 0px;<br/>
+			&nbsp;&nbsp;overflow: visible;<br/>
+			&nbsp;&nbsp;position: fixed;<br/>
+			&nbsp;&nbsp;top: 232px;<br/>
+			&nbsp;&nbsp;width: 48px;<br/>
+			&nbsp;&nbsp;z-index: 9998;<br/>
+			}<br/>
+			#skootch-me dt{ <br/>
+			&nbsp;&nbsp;cursor: pointer;<br/>
+			&nbsp;&nbsp;float: left;<br/>
+			&nbsp;&nbsp;font-weight: bold;<br/>
+			&nbsp;&nbsp;height: 31px;<br/>
+			&nbsp;&nbsp;left: 0px;<br/>
+			&nbsp;&nbsp;position: absolute;<br/>
+			&nbsp;&nbsp;white-space: nowrap;<br/>
+			&nbsp;&nbsp;width: 48px;<br/>
+			&nbsp;&nbsp;z-index: 9999;<br/>
+			}<br/>
+			#skootch-me dt{ <br/>
+			&nbsp;&nbsp;background-color: #008e2b;<br/>
+			}<br/>
+			#skootch-me dt.skootch-trigger-open{ <br/>
+			&nbsp;&nbsp;background-color: #363d8c;<br/>
+			}<br/>
+			#skootch-me dt a { <br/>
+			&nbsp;&nbsp;-webkit-transform: rotate(90deg);<br/>
+			&nbsp;&nbsp;-moz-transform: rotate(90deg);<br/>
+			&nbsp;&nbsp;-o-transform: rotate(90deg);<br/>
+			&nbsp;&nbsp;transform: rotate(90deg);<br/>
+			&nbsp;&nbsp;display: block;<br/>
+			&nbsp;&nbsp;font-size: 15px;<br/>
+			&nbsp;&nbsp;position: relative;<br/>
+			&nbsp;&nbsp;text-transform: capitalize;<br/>
+			&nbsp;&nbsp;top: 56px;<br/>
+			}	<br/>
+			#skootch-invader{ <br/>
+			&nbsp;&nbsp;display:inline-block;<br/>
+			&nbsp;&nbsp;width:100px;<br/>
+			&nbsp;&nbsp;position:absolute;<br/>
+			&nbsp;&nbsp;left: -160px;<br/>
+			&nbsp;&nbsp;background-color: #ccc; <br/>
+			&nbsp;&nbsp;padding-left: 60px;<br/>
+			}<br/>
+			#skootch-indigen{ <br/>
+			&nbsp;&nbsp;padding-top:20px;<br/>
+			&nbsp;&nbsp;width:800px;<br/>
+			&nbsp;&nbsp;margin:0 auto;<br/>
+			}<br/>
+		</code>
+		
+		<h2>The JS</h2>
+		<code>
+			$('#skootch-trigger').skootch();
+		</code>
+	</div>
+	
+	<script type="text/javascript">
+		$('#skootch-trigger').skootch();
+	</script>
+</body>
+</html>
