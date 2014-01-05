@@ -1,0 +1,8 @@
+{
+  "name": "d3tests",
+  "description": "Some d3 tests",
+  "dependencies": {
+    "express": "*",
+    "commander": "2.1.x"
+  }
+}
